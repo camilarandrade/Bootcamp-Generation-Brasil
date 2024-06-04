@@ -1,0 +1,26 @@
+package OperadoresLogicos;
+
+import java.util.Scanner;
+
+public class OperadoresLogicos {
+
+public static void main(String[] args) {
+Scanner teclado= new Scanner(System.in);
+
+float Salario; 
+float Abono;
+
+System.out.println ("Digite o seu salário bruto: ");
+Salario= teclado.nextFloat();
+
+System.out.println ("Digite o valor do abono: ");
+Abono= teclado.nextFloat();
+
+float NovoSalario= Salario+Abono;
+
+System.out.println ("Portanto, o seu novo salario é: " + NovoSalario);
+
+teclado.close(); 
+}
+
+}
