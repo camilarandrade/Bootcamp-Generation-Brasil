@@ -31,6 +31,7 @@ public class ExercicioVetor {
 
 			if (vetor[indice] == numero) {
 				System.out.println("O número " + numero + " está localizado na posição " + indice++);
+				break;
 			}
 
 		}
