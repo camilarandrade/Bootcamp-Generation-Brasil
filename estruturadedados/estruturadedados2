@@ -1,0 +1,89 @@
+package estruturadedados;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+//Escreva um programa Java contendo uma Collection Queue (Fila) de Objetos da Classe String,
+//para organizar a ordem de chegada dos Clientes de um Banco. O programa deverá ter um Menu 
+//que aceitará as opções 0, 1, 2 e 3:
+
+public class estruturadedados1 {
+
+	public static void main(String[] args) {
+		Scanner leia= new Scanner(System.in);
+		
+		Queue<String> pessoas = new LinkedList<String>();
+		int opcao=1;
+		
+		
+		System.out.println("************ Escolha uma Opção do Menu: *************");
+		System.out.println("Digite 1 para: Adicionar cliente na fila. ");
+		System.out.println("Digite 2 para: Listar todos os clientes.");
+		System.out.println("Digite 3 para: Retirar clientes da fila. ");
+		System.out.println("Digite 0 para: Sair ");
+		
+		//loop para continuar enquanto a opção estiver entre 1 e 3.
+		//só vai executar se a opção solicitada nao for igual a 0, ou menor que 4
+		
+		while (opcao!=0 && opcao> 0 && opcao<4) {
+			
+			do { //vai continuar solicitando até que a opção inserida seja válida
+				 System.out.printf("Entre com a opção desejada: ");
+	                opcao = leia.nextInt(); 
+	            } while (opcao < 0 || opcao > 3); 
+			
+			
+			switch (opcao) {
+			case 1:
+				System.out.printf("Digite o nome: ");
+				leia.nextLine();
+				pessoas.add(leia.nextLine()); // se digitar um, vai adicionar o nome digitado no scanner, e o pessoas add puxa pra lista
+
+				System.out.println("\nQuantidade de pessoas na Fila: ");
+				for (String pessoa : pessoas) { //vai imprimir quantas pessoas tem na fila atualmente
+					System.out.println(pessoa);
+				}
+				System.out.println("\nCliente Adicionado!\n");
+				break;
+			case 2:
+				if (pessoas.size() == 0) { //se o tamanho da fila for igual a 0, imprimirá que a fila está vazia
+					System.out.println("\nA Fila está vazia!\n");
+				} else {
+					System.out.println("\nLista de Clientes na fila:\n"); //caso contrário, imprime quantas pessoas possui
+					for (String pessoa : pessoas) {
+						System.out.println(pessoa);
+					}
+					System.out.println();
+				}
+				break;
+			case 3:
+				if (pessoas.size() == 0) {
+					System.out.println("\nA Fila está vazia!\n"); //se o tamanho da fila for igual a 0, imprimirá que a fila está vazia
+				} else {
+					pessoas.poll(); // exclui o primeiro elemento da fila
+					if (pessoas.size() == 0) {
+						System.out.println("\nA Fila está vazia!\n");
+					} else {
+						System.out.println("\nFila:");
+						for (String pessoa : pessoas) {
+							System.out.println(pessoa);
+						}
+					}
+
+					System.out.println("\nO Cliente foi Chamado!\n");
+				}
+				break;
+			case 0:
+				System.out.println("\nPrograma Finalizado!");
+				break;
+			}
+		}
+		
+		
+		leia.close();
+		
+		
+	}
+
+}
