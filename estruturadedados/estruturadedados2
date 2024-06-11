@@ -1,89 +1,81 @@
 package estruturadedados;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 
-//Escreva um programa Java contendo uma Collection Queue (Fila) de Objetos da Classe String,
-//para organizar a ordem de chegada dos Clientes de um Banco. O programa deverá ter um Menu 
-//que aceitará as opções 0, 1, 2 e 3:
+public class estruturadedados2 {
 
-public class estruturadedados1 {
+		public static void main(String[] args) {
+			Scanner leia = new Scanner(System.in);
 
-	public static void main(String[] args) {
-		Scanner leia= new Scanner(System.in);
-		
-		Queue<String> pessoas = new LinkedList<String>();
-		int opcao=1;
-		
-		
-		System.out.println("************ Escolha uma Opção do Menu: *************");
-		System.out.println("Digite 1 para: Adicionar cliente na fila. ");
-		System.out.println("Digite 2 para: Listar todos os clientes.");
-		System.out.println("Digite 3 para: Retirar clientes da fila. ");
-		System.out.println("Digite 0 para: Sair ");
-		
-		//loop para continuar enquanto a opção estiver entre 1 e 3.
-		//só vai executar se a opção solicitada nao for igual a 0, ou menor que 4
-		
-		while (opcao!=0 && opcao> 0 && opcao<4) {
+			Stack<String> livros = new Stack<String>();
+			int opcao = 1;
 			
-			do { //vai continuar solicitando até que a opção inserida seja válida
-				 System.out.printf("Entre com a opção desejada: ");
-	                opcao = leia.nextInt(); 
-	            } while (opcao < 0 || opcao > 3); 
+			System.out.println("************ Escolha uma Opção do Menu: *************");
+			System.out.println("Digite 1 para: Adicionar livro na pilha. ");
+			System.out.println("Digite 2 para: Listar todos os livros");
+			System.out.println("Digite 3 para: Retirar livro da pilha ");
+			System.out.println("Digite 0 para: Sair ");
 			
-			
-			switch (opcao) {
-			case 1:
-				System.out.printf("Digite o nome: ");
-				leia.nextLine();
-				pessoas.add(leia.nextLine()); // se digitar um, vai adicionar o nome digitado no scanner, e o pessoas add puxa pra lista
-
-				System.out.println("\nQuantidade de pessoas na Fila: ");
-				for (String pessoa : pessoas) { //vai imprimir quantas pessoas tem na fila atualmente
-					System.out.println(pessoa);
-				}
-				System.out.println("\nCliente Adicionado!\n");
-				break;
-			case 2:
-				if (pessoas.size() == 0) { //se o tamanho da fila for igual a 0, imprimirá que a fila está vazia
-					System.out.println("\nA Fila está vazia!\n");
-				} else {
-					System.out.println("\nLista de Clientes na fila:\n"); //caso contrário, imprime quantas pessoas possui
-					for (String pessoa : pessoas) {
-						System.out.println(pessoa);
+			while (opcao!=0 && opcao> 0 && opcao<4) {
+				
+				do { //vai continuar solicitando até que a opção inserida seja válida
+					 System.out.printf("Entre com a opção desejada: ");
+		                opcao = leia.nextInt(); 
+		            } while (opcao < 0 || opcao > 3); 
+				
+				switch (opcao) {
+				case 1:
+					System.out.printf("Digite o nome do livro: ");
+					leia.nextLine();
+					livros.push(leia.nextLine()); //inclui o livro através do push
+					
+					System.out.println("\nLivros na Pilha:");
+					for (String livro : livros) {
+						System.out.println(livro);
 					}
-					System.out.println();
-				}
-				break;
-			case 3:
-				if (pessoas.size() == 0) {
-					System.out.println("\nA Fila está vazia!\n"); //se o tamanho da fila for igual a 0, imprimirá que a fila está vazia
-				} else {
-					pessoas.poll(); // exclui o primeiro elemento da fila
-					if (pessoas.size() == 0) {
-						System.out.println("\nA Fila está vazia!\n");
+					System.out.println("\nLivro Adicionado!\n");
+					break;
+					
+				case 2:
+					if (livros.size() == 0) {
+						System.out.println("\nA Pilha está vazia!\n"); // se o tamanho for igual a 0 retorna que está vazia
+						
 					} else {
-						System.out.println("\nFila:");
-						for (String pessoa : pessoas) {
-							System.out.println(pessoa);
+						System.out.println("\nLista de Livros na fila:\n"); //caso contrário, mostra a lista dos livros
+						for (String livro : livros) {
+							System.out.println(livro);
 						}
+						System.out.println();
 					}
+					break;
+				case 3:
+					if (livros.size() == 0) { // se o tamanho for igual a 0 retorna que está vazia
+						System.out.println("\nA Pilha está vazia!\n");
+					} else {
+						livros.pop(); // se não, remove o ultimo item da lista
+						if (livros.size() == 0) {
+							System.out.println("\nA Pilha está vazia!\n");
+						} else {
+							System.out.println("\nPilha:");
+							for (String livro : livros) {
+								System.out.println(livro);
+							}
+						}
 
-					System.out.println("\nO Cliente foi Chamado!\n");
+						System.out.println("\nUm Livro foi retirado da pilha!\n");
+					}
+					break;
+				case 0:
+					System.out.println("\nPrograma Finalizado!");
+					break;
 				}
-				break;
-			case 0:
-				System.out.println("\nPrograma Finalizado!");
-				break;
 			}
+		
+			leia.close();
 		}
-		
-		
-		leia.close();
-		
-		
-	}
+	
+				
+	
 
 }
